@@ -5,7 +5,9 @@ declare(strict_types=1);
 namespace App\Models;
 
 use App\Models\Traits\HasUserId;
+use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Carbon;
 
@@ -14,6 +16,8 @@ use Illuminate\Support\Carbon;
  *
  * @property string $title
  * @property bool $active
+ *
+ * @property-read EloquentCollection<Bid> $bids
  *
  * @property-read Carbon $created_at
  * @property-read Carbon $updated_at
@@ -36,4 +40,9 @@ class Advertisement extends Model
     protected $casts = [
         'active' => 'bool',
     ];
+
+    public function bids(): HasMany
+    {
+        return $this->hasMany(Bid::class);
+    }
 }
