@@ -2,10 +2,13 @@
 
 namespace App\Providers;
 
+use App\Events\AdvertisementCreatingOrUpdatingEvent;
+use App\Listeners\UnPublishAdvertisementOnModificationListener;
+use App\Models\Advertisement;
+use App\Observers\AdvertisementObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
-use Illuminate\Support\Facades\Event;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -18,6 +21,9 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        AdvertisementCreatingOrUpdatingEvent::class => [
+            UnPublishAdvertisementOnModificationListener::class,
+        ],
     ];
 
     /**
@@ -25,7 +31,7 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Advertisement::observe(AdvertisementObserver::class);
     }
 
     /**
