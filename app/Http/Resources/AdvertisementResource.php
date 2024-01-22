@@ -21,6 +21,8 @@ class AdvertisementResource extends JsonResource
 
             'user' => new UserResource($this->whenLoaded('user')),
 
+            'bids' => BidResource::collection($this->whenLoaded('bids')),
+
             'created_at' => $this->created_at->format('d.m.Y H:i'),
             'updated_at' => $this->updated_at->format('d.m.Y H:i'),
         ];

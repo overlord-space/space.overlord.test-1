@@ -6,34 +6,34 @@ namespace App\Models;
 
 use App\Models\Traits\HasUserId;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Carbon;
 
 /**
  * @property-read int $id
  *
- * @property string $title
- * @property bool $active
+ * @property int $advertisement_id
+ * @property-read Advertisement $advertisement
  *
  * @property-read Carbon $created_at
  * @property-read Carbon $updated_at
- * @property-read ?Carbon $deleted_at
  */
-class Advertisement extends Model
+class Bid extends Model
 {
-    use SoftDeletes, HasUserId;
+    use HasUserId;
 
     protected $fillable = [
         'user_id',
-        'title',
-        'active',
+        'advertisement_id',
     ];
 
     protected $with = [
         'user',
     ];
 
-    protected $casts = [
-        'active' => 'bool',
-    ];
+    public function advertisement(): BelongsTo
+    {
+        return $this->belongsTo(Advertisement::class)
+            ->withTrashed();
+    }
 }
