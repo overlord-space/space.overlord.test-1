@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Auth;
  */
 trait HasUserId
 {
-    public function bootHasUserId(): void
+    public static function bootHasUserId(): void
     {
         static::creating(function (Model $model) {
             /** @noinspection PhpUndefinedFieldInspection */
