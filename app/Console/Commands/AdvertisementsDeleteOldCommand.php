@@ -21,12 +21,12 @@ class AdvertisementsDeleteOldCommand extends Command
     {
         $date = $this->getDate();
 
-        $this->info('Start deleting old advertisements, less than ' . $date->toDateString());
+        $this->log('Start deleting old advertisements, less than ' . $date->toDateString());
 
         try {
             $deletedCount = AdvertisementCleanerFacade::cleanOldAdvertisements($date);
 
-            $this->info('Deleted ' . $deletedCount . ' advertisements');
+            $this->log('Deleted ' . $deletedCount . ' advertisements');
         } catch (AdvertisementException $e) {
             $this->log($e->getMessage(), 'error');
         }

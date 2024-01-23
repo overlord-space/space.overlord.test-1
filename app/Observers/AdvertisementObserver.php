@@ -16,5 +16,6 @@ class AdvertisementObserver
 
     public function updating(Advertisement $advertisement): void
     {
+        event(new AdvertisementCreatingOrUpdatingEvent($advertisement));
     }
 }
