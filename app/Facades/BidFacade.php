@@ -15,6 +15,6 @@ class BidFacade extends Facade
 {
     protected static function getFacadeAccessor(): string
     {
-        return 'bid';
+        return 'bid_service';
     }
 }

@@ -13,8 +13,9 @@ class DomainServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->app->bind('advertisement', AdvertisementService::class);
-        $this->app->bind('bid', BidService::class);
-        $this->app->bind('advertisement_cleaner', AdvertisementCleanerService::class);
+        /** Services */
+        $this->app->bind('advertisement_service', AdvertisementService::class);
+        $this->app->bind('bid_service', BidService::class);
+        $this->app->bind('advertisement_cleaner_service', AdvertisementCleanerService::class);
     }
 }

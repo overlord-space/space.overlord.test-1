@@ -15,6 +15,6 @@ class AdvertisementFacade extends Facade
 {
     protected static function getFacadeAccessor(): string
     {
-        return 'advertisement';
+        return 'advertisement_service';
     }
 }

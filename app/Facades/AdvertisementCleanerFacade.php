@@ -15,6 +15,6 @@ class AdvertisementCleanerFacade extends Facade
 {
     protected static function getFacadeAccessor(): string
     {
-        return 'advertisement_cleaner';
+        return 'advertisement_cleaner_service';
     }
 }
