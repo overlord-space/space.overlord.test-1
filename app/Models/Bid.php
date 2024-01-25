@@ -27,12 +27,9 @@ class Bid extends Model
         'advertisement_id',
     ];
 
-    protected $with = [
-        'user',
-    ];
-
     public function advertisement(): BelongsTo
     {
+        /** @noinspection PhpPossiblePolymorphicInvocationInspection */
         return $this->belongsTo(Advertisement::class)
             ->withTrashed();
     }

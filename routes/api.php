@@ -18,7 +18,5 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::middleware('auth.api-token')->group(function () {
-    Route::get('/', function () {
-        dd(request()->user());
-    });
+    Route::apiResource('advertisements', 'App\Http\Controllers\Api\AdvertisementController')->only(['index', 'store', 'update', 'destroy']);
 });

@@ -5,9 +5,10 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Exceptions\AdvertisementException;
+use App\Http\Resources\AdvertisementResource;
 use App\Models\Advertisement;
 use App\Models\Scopes\ActiveScope;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Throwable;
 
 class AdvertisementService
@@ -15,15 +16,18 @@ class AdvertisementService
     protected array $requestData;
     protected Advertisement $advertisement;
 
-    public function index(): Collection
+    public function index(): AnonymousResourceCollection
     {
-        return Advertisement::query()->withGlobalScope('active', new ActiveScope())
-            ->get();
+        return AdvertisementResource::collection(
+            Advertisement::query()
+                ->withGlobalScope('active', new ActiveScope())
+                ->paginate()
+        );
     }
 
-    public function show(): Advertisement
+    public function show(): AdvertisementResource
     {
-        return $this->advertisement->loadMissing('bids');
+        return new AdvertisementResource($this->getAdvertisement());
     }
 
     /**
@@ -35,6 +39,7 @@ class AdvertisementService
 
         try {
             $advertisement->saveOrFail();
+            $this->setAdvertisement($advertisement);
         } catch (Throwable $e) {
             throw new AdvertisementException('Failed to create advertisement', 500, $e);
         }
@@ -80,7 +85,7 @@ class AdvertisementService
 
     public function getAdvertisement(): Advertisement
     {
-        return $this->advertisement;
+        return $this->advertisement->loadMissing('bids');
     }
 
     public function setRequestData(array $requestData): static

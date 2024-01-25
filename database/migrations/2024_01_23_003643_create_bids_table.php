@@ -12,8 +12,8 @@ return new class extends Migration {
         Schema::create('bids', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('user_id')->constrained()
-                ->cascadeOnDelete();
+            $table->unsignedBigInteger('user_id');
+
             $table->foreignId('advertisement_id')->constrained()
                 ->cascadeOnDelete();
 

@@ -12,8 +12,7 @@ return new class extends Migration {
         Schema::create('advertisements', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('user_id')->constrained()
-                ->cascadeOnDelete();
+            $table->unsignedBigInteger('user_id');
 
             $table->string('title');
             $table->boolean('active')->default(false);

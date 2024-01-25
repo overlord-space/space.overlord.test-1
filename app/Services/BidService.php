@@ -5,9 +5,10 @@ declare(strict_types=1);
 namespace App\Services;
 
 use App\Exceptions\BidException;
+use App\Http\Resources\BidResource;
 use App\Models\Advertisement;
 use App\Models\Bid;
-use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Throwable;
 
 class BidService
@@ -15,16 +16,18 @@ class BidService
     protected array $requestData;
     protected Bid $bid;
 
-    public function index(): LengthAwarePaginator
+    public function index(): AnonymousResourceCollection
     {
-        return Bid::query()
-            ->with(['advertisement'])
-            ->paginate();
+        return BidResource::collection(
+            Bid::query()
+                ->with(['advertisement'])
+                ->paginate()
+        );
     }
 
-    public function show(): Bid
+    public function show(): BidResource
     {
-        return $this->bid->loadMissing('user', 'advertisement');
+        return new BidResource($this->getBid());
     }
 
     /**
@@ -44,6 +47,7 @@ class BidService
 
         try {
             $bid->saveOrFail();
+            $this->setBid($bid);
         } catch (Throwable $e) {
             throw new BidException('Failed to create bid', 500, $e);
         }
@@ -60,5 +64,16 @@ class BidService
     public function getRequestData(): array
     {
         return $this->requestData;
+    }
+
+    public function setBid(Bid $bid): static
+    {
+        $this->bid = $bid;
+        return $this;
+    }
+
+    public function getBid(): Bid
+    {
+        return $this->bid->loadMissing(['advertisement']);
     }
 }

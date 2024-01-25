@@ -19,7 +19,7 @@ class AdvertisementResource extends JsonResource
             'title' => $this->title,
             'active' => $this->active,
 
-            'user' => new UserResource($this->whenLoaded('user')),
+            'user' => new UserResource($this->user),
 
             'bids' => BidResource::collection($this->whenLoaded('bids')),
 

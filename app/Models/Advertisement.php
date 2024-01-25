@@ -33,10 +33,6 @@ class Advertisement extends Model
         'active',
     ];
 
-    protected $with = [
-        'user',
-    ];
-
     protected $casts = [
         'active' => 'bool',
     ];
