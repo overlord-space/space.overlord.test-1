@@ -32,6 +32,11 @@ class AdvertisementPolicy
         return $this->allow();
     }
 
+    public function activate(User $user, Advertisement $advertisement): Response
+    {
+        return $this->checkAdvertisementOwnership($user, $advertisement);
+    }
+
     public function update(User $user, Advertisement $advertisement): Response
     {
         return $this->checkAdvertisementOwnership($user, $advertisement);

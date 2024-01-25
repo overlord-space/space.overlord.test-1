@@ -46,6 +46,22 @@ class AdvertisementController extends Controller
         ]);
     }
 
+    public function activate(Advertisement $advertisement)
+    {
+        $this->authorize('activate', $advertisement);
+
+        try {
+            return response()->json([
+                'data' => AdvertisementFacade::setAdvertisement($advertisement)->activate()->show(),
+                'message' => 'Successfully moderated advertisement',
+            ]);
+        } catch (AdvertisementException $e) {
+            return response()->json([
+                'message' => $e->getMessage(),
+            ], $e->getCode());
+        }
+    }
+
     public function update(UpdateAdvertisementRequest $request, Advertisement $advertisement)
     {
         try {

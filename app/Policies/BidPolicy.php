@@ -15,7 +15,7 @@ class BidPolicy
 
     public function viewAny(User $user): Response
     {
-        return $this->deny('Action not allowed.');
+        return $this->allow();
     }
 
     public function view(User $user, Bid $bid): Response

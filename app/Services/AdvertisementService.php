@@ -50,6 +50,22 @@ class AdvertisementService
     /**
      * @throws AdvertisementException
      */
+    public function activate(): static
+    {
+        $this->advertisement->active = true;
+
+        try {
+            $this->advertisement->saveQuietly();
+        } catch (Throwable $e) {
+            throw new AdvertisementException('Failed to activate advertisement', 500, $e);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @throws AdvertisementException
+     */
     public function update(): static
     {
         $this->advertisement->fill($this->getRequestData());

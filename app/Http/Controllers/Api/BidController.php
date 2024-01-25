@@ -12,6 +12,11 @@ use App\Models\Bid;
 
 class BidController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Bid::class, 'bid');
+    }
+
     public function index()
     {
         return response()->json([
