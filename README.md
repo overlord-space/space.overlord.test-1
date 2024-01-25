@@ -4,6 +4,7 @@
 * [Тестовое задание](#тестовое-задание)
   * [Описание задания](#описание-задания)
   * [Описание решения](#описание-решения)
+    * [Маршруты:](#маршруты)
 <!-- TOC -->
 
 ## Описание задания
@@ -40,4 +41,28 @@
    сервисе [\[BidService\]](app/Services/BidService.php) реализована проверка активности объявления.
 3. Реализован собственный [\[DomainServiceProvider\]](app/Providers/DomainServiceProvider.php), который регистрирует
    фасады для сервисов.
-4. @todo
+4. Пользователи хранятся статично в файле [\[users.json\]](users.json). Для поиска по пользователям
+   реализован [\[UserRepository\]](app/Repositories/UserRepository.php).
+   Для авторизации пользователей реализован [\[AuthService\]](app/Services/AuthService.php). Для проверки Bearer токена
+   реализован [\[AuthenticationMiddleware\]](app/Http/Middleware/AuthenticationMiddleware.php).
+
+### Маршруты:
+
+Сгенерированы схемы для тестирования API в
+[\[Postman\]](api.postman.json) / [\[RapidAPI\]](api.paw) / [\[Swagger 2\]](api.swagger2.json).
+
+| Метод  | URI                               | Описание                                                      |
+|--------|-----------------------------------|---------------------------------------------------------------|
+|        | **Авторизация**                   |                                                               |
+| POST   | /api/login                        | Авторизация                                                   |
+|        | **Объявления**                    |                                                               |
+| GET    | /api/advertisements               | Получить список объявлений                                    |
+| POST   | /api/advertisements               | Создать объявление                                            |
+| GET    | /api/advertisements/{id}          | Получить объявление (доступно только для активных объявлений) |
+| GET    | /api/advertisements/{id}/activate | Активировать объявление (для тестирования)                    |
+| PUT    | /api/advertisements/{id}          | Обновить объявление                                           |
+| DELETE | /api/advertisements/{id}          | Удалить объявление                                            |
+|        | **Ставки**                        |                                                               |
+| GET    | /api/bids                         | Получить список ставок                                        |
+| POST   | /api/bids                         | Создать ставку                                                |
+| GET    | /api/bids/{id}                    | Получить свою ставку                                          |

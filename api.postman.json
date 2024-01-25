@@ -1,0 +1,452 @@
+{
+  "info": {
+    "name": "api.paw",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Guest",
+      "item": [
+        {
+          "name": "Login request",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "{{APP_URL}}/api/login",
+              "query": null,
+              "protocol": null,
+              "host": [
+                "{{APP_URL}}/api/login"
+              ],
+              "port": null,
+              "path": null
+            },
+            "description": "",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "disabled": false,
+                "description": null
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "disabled": false,
+              "raw": "{\"email\":\"user@user.com\",\"password\":\"123456\"}"
+            },
+            "auth": null
+          },
+          "protocolProfileBehavior": {
+            "followRedirects": false,
+            "followOriginalHttpMethod": false,
+            "followAuthorizationHeader": false
+          },
+          "response": []
+        }
+      ],
+      "protocolProfileBehavior": null,
+      "response": []
+    },
+    {
+      "name": "Authenticated",
+      "item": [
+        {
+          "name": "Advertisements",
+          "item": [
+            {
+              "name": "Advertisements: index",
+              "request": {
+                "method": "GET",
+                "url": {
+                  "raw": "{{APP_URL}}/api/advertisements?page=1",
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1",
+                      "disabled": false,
+                      "description": null
+                    }
+                  ],
+                  "protocol": null,
+                  "host": [
+                    "{{APP_URL}}/api/advertisements"
+                  ],
+                  "port": null,
+                  "path": null
+                },
+                "description": "",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer 1|iI6wfgxiiVkjlebStqLav3fdrWgOO2KtwTw6CufJ88647bca",
+                    "disabled": false,
+                    "description": null
+                  }
+                ],
+                "body": null,
+                "auth": null
+              },
+              "protocolProfileBehavior": {
+                "followRedirects": false,
+                "followOriginalHttpMethod": false,
+                "followAuthorizationHeader": false
+              },
+              "response": []
+            },
+            {
+              "name": "Advertisements: store",
+              "request": {
+                "method": "POST",
+                "url": {
+                  "raw": "{{APP_URL}}/api/advertisements",
+                  "query": null,
+                  "protocol": null,
+                  "host": [
+                    "{{APP_URL}}/api/advertisements"
+                  ],
+                  "port": null,
+                  "path": null
+                },
+                "description": "",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "disabled": false,
+                    "description": null
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer 1|iI6wfgxiiVkjlebStqLav3fdrWgOO2KtwTw6CufJ88647bca",
+                    "disabled": false,
+                    "description": null
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "disabled": false,
+                  "raw": "{\"title\":\"2024-01-26 03:45:14+10:00\"}"
+                },
+                "auth": null
+              },
+              "protocolProfileBehavior": {
+                "followRedirects": false,
+                "followOriginalHttpMethod": false,
+                "followAuthorizationHeader": false
+              },
+              "response": []
+            },
+            {
+              "name": "Advertisements: show",
+              "request": {
+                "method": "GET",
+                "url": {
+                  "raw": "{{APP_URL}}/api/advertisements/2?page=1",
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1",
+                      "disabled": false,
+                      "description": null
+                    }
+                  ],
+                  "protocol": null,
+                  "host": [
+                    "{{APP_URL}}/api/advertisements/2"
+                  ],
+                  "port": null,
+                  "path": null
+                },
+                "description": "",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer 1|iI6wfgxiiVkjlebStqLav3fdrWgOO2KtwTw6CufJ88647bca",
+                    "disabled": false,
+                    "description": null
+                  }
+                ],
+                "body": null,
+                "auth": null
+              },
+              "protocolProfileBehavior": {
+                "followRedirects": false,
+                "followOriginalHttpMethod": false,
+                "followAuthorizationHeader": false
+              },
+              "response": []
+            },
+            {
+              "name": "Advertisements: activate",
+              "request": {
+                "method": "POST",
+                "url": {
+                  "raw": "{{APP_URL}}/api/advertisements/2/activate?page=1",
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1",
+                      "disabled": false,
+                      "description": null
+                    }
+                  ],
+                  "protocol": null,
+                  "host": [
+                    "{{APP_URL}}/api/advertisements/2/activate"
+                  ],
+                  "port": null,
+                  "path": null
+                },
+                "description": "For test purpose",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer 1|iI6wfgxiiVkjlebStqLav3fdrWgOO2KtwTw6CufJ88647bca",
+                    "disabled": false,
+                    "description": null
+                  }
+                ],
+                "body": null,
+                "auth": null
+              },
+              "protocolProfileBehavior": {
+                "followRedirects": false,
+                "followOriginalHttpMethod": false,
+                "followAuthorizationHeader": false
+              },
+              "response": []
+            },
+            {
+              "name": "Advertisements: update",
+              "request": {
+                "method": "PUT",
+                "url": {
+                  "raw": "{{APP_URL}}/api/advertisements/2",
+                  "query": null,
+                  "protocol": null,
+                  "host": [
+                    "{{APP_URL}}/api/advertisements/2"
+                  ],
+                  "port": null,
+                  "path": null
+                },
+                "description": "",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "disabled": false,
+                    "description": null
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer 1|iI6wfgxiiVkjlebStqLav3fdrWgOO2KtwTw6CufJ88647bca",
+                    "disabled": false,
+                    "description": null
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "disabled": false,
+                  "raw": "{\"title\":\"2024-01-26 03:45:14+10:00\"}"
+                },
+                "auth": null
+              },
+              "protocolProfileBehavior": {
+                "followRedirects": false,
+                "followOriginalHttpMethod": false,
+                "followAuthorizationHeader": false
+              },
+              "response": []
+            },
+            {
+              "name": "Advertisements: destroy",
+              "request": {
+                "method": "DELETE",
+                "url": {
+                  "raw": "{{APP_URL}}/api/advertisements/2",
+                  "query": null,
+                  "protocol": null,
+                  "host": [
+                    "{{APP_URL}}/api/advertisements/2"
+                  ],
+                  "port": null,
+                  "path": null
+                },
+                "description": "",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "disabled": false,
+                    "description": null
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer 1|iI6wfgxiiVkjlebStqLav3fdrWgOO2KtwTw6CufJ88647bca",
+                    "disabled": false,
+                    "description": null
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "disabled": false,
+                  "raw": "{}"
+                },
+                "auth": null
+              },
+              "protocolProfileBehavior": {
+                "followRedirects": false,
+                "followOriginalHttpMethod": false,
+                "followAuthorizationHeader": false
+              },
+              "response": []
+            }
+          ],
+          "protocolProfileBehavior": null,
+          "response": []
+        },
+        {
+          "name": "Bids",
+          "item": [
+            {
+              "name": "Bids: index",
+              "request": {
+                "method": "GET",
+                "url": {
+                  "raw": "{{APP_URL}}/api/bids?page=1",
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1",
+                      "disabled": false,
+                      "description": null
+                    }
+                  ],
+                  "protocol": null,
+                  "host": [
+                    "{{APP_URL}}/api/bids"
+                  ],
+                  "port": null,
+                  "path": null
+                },
+                "description": "",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer 1|iI6wfgxiiVkjlebStqLav3fdrWgOO2KtwTw6CufJ88647bca",
+                    "disabled": false,
+                    "description": null
+                  }
+                ],
+                "body": null,
+                "auth": null
+              },
+              "protocolProfileBehavior": {
+                "followRedirects": false,
+                "followOriginalHttpMethod": false,
+                "followAuthorizationHeader": false
+              },
+              "response": []
+            },
+            {
+              "name": "Bids: store",
+              "request": {
+                "method": "POST",
+                "url": {
+                  "raw": "{{APP_URL}}/api/bids?page=1",
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1",
+                      "disabled": false,
+                      "description": null
+                    }
+                  ],
+                  "protocol": null,
+                  "host": [
+                    "{{APP_URL}}/api/bids"
+                  ],
+                  "port": null,
+                  "path": null
+                },
+                "description": "",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json",
+                    "disabled": false,
+                    "description": null
+                  },
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer 1|iI6wfgxiiVkjlebStqLav3fdrWgOO2KtwTw6CufJ88647bca",
+                    "disabled": false,
+                    "description": null
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "disabled": false,
+                  "raw": "{\"advertisement_id\":\"2\"}"
+                },
+                "auth": null
+              },
+              "protocolProfileBehavior": {
+                "followRedirects": false,
+                "followOriginalHttpMethod": false,
+                "followAuthorizationHeader": false
+              },
+              "response": []
+            },
+            {
+              "name": "Bids: show",
+              "request": {
+                "method": "GET",
+                "url": {
+                  "raw": "{{APP_URL}}/api/bids/1?page=1",
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1",
+                      "disabled": false,
+                      "description": null
+                    }
+                  ],
+                  "protocol": null,
+                  "host": [
+                    "{{APP_URL}}/api/bids/1"
+                  ],
+                  "port": null,
+                  "path": null
+                },
+                "description": "",
+                "header": [
+                  {
+                    "key": "Authorization",
+                    "value": "Bearer 1|iI6wfgxiiVkjlebStqLav3fdrWgOO2KtwTw6CufJ88647bca",
+                    "disabled": false,
+                    "description": null
+                  }
+                ],
+                "body": null,
+                "auth": null
+              },
+              "protocolProfileBehavior": {
+                "followRedirects": false,
+                "followOriginalHttpMethod": false,
+                "followAuthorizationHeader": false
+              },
+              "response": []
+            }
+          ],
+          "protocolProfileBehavior": null,
+          "response": []
+        }
+      ],
+      "protocolProfileBehavior": null,
+      "response": []
+    }
+  ]
+}

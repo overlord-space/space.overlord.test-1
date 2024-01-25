@@ -1,0 +1,300 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "api.paw",
+    "version": "v0.0.0"
+  },
+  "host": "localhost:8000",
+  "schemes": [
+    "http"
+  ],
+  "basePath": "/api",
+  "paths": {
+    "/login": {
+      "post": {
+        "summary": "Login request",
+        "description": "",
+        "operationId": "966d78a4-2422-4e4d-92f9-d0cc12515ccd",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "{\"email\":\"user@user.com\",\"password\":\"123456\"}"
+            },
+            "in": "body",
+            "name": "body"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "no response description was provided for this operation"
+          }
+        }
+      }
+    },
+    "/advertisements": {
+      "get": {
+        "summary": "Advertisements: index",
+        "description": "",
+        "operationId": "bebc771c-edc6-4851-8dc2-e039b430fdc4",
+        "parameters": [
+          {
+            "type": "string",
+            "default": "1",
+            "name": "page",
+            "required": false,
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "no response description was provided for this operation"
+          }
+        },
+        "security": [
+          {
+            "oauth_2_auth": []
+          }
+        ]
+      },
+      "post": {
+        "summary": "Advertisements: store",
+        "description": "",
+        "operationId": "d8b436c2-9de4-4ffc-b594-9d01da5f6876",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "{\"title\":\"2024-01-26 03:45:29+10:00\"}"
+            },
+            "in": "body",
+            "name": "body"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "no response description was provided for this operation"
+          }
+        },
+        "security": [
+          {
+            "oauth_2_auth": []
+          }
+        ]
+      }
+    },
+    "/advertisements/2": {
+      "get": {
+        "summary": "Advertisements: show",
+        "description": "",
+        "operationId": "de572572-3896-49fd-bcc4-a620be518664",
+        "parameters": [
+          {
+            "type": "string",
+            "default": "1",
+            "name": "page",
+            "required": false,
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "no response description was provided for this operation"
+          }
+        },
+        "security": [
+          {
+            "oauth_2_auth": []
+          }
+        ]
+      },
+      "put": {
+        "summary": "Advertisements: update",
+        "description": "",
+        "operationId": "4aaf652d-2b34-48b3-b30e-fa0d9621531e",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "{\"title\":\"2024-01-26 03:45:29+10:00\"}"
+            },
+            "in": "body",
+            "name": "body"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "no response description was provided for this operation"
+          }
+        },
+        "security": [
+          {
+            "oauth_2_auth": []
+          }
+        ]
+      },
+      "delete": {
+        "summary": "Advertisements: destroy",
+        "description": "",
+        "operationId": "3f0ead9a-e1ee-4f35-9a90-c8bba392b52c",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "{}"
+            },
+            "in": "body",
+            "name": "body"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "no response description was provided for this operation"
+          }
+        },
+        "security": [
+          {
+            "oauth_2_auth": []
+          }
+        ]
+      }
+    },
+    "/advertisements/2/activate": {
+      "post": {
+        "summary": "Advertisements: activate",
+        "description": "For test purpose",
+        "operationId": "92135e4c-480c-4999-936c-96de3ca150ce",
+        "parameters": [
+          {
+            "type": "string",
+            "default": "1",
+            "name": "page",
+            "required": false,
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "no response description was provided for this operation"
+          }
+        },
+        "security": [
+          {
+            "oauth_2_auth": []
+          }
+        ]
+      }
+    },
+    "/bids": {
+      "get": {
+        "summary": "Bids: index",
+        "description": "",
+        "operationId": "8d1b3fa7-caa1-4863-800a-d72895ba8a09",
+        "parameters": [
+          {
+            "type": "string",
+            "default": "1",
+            "name": "page",
+            "required": false,
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "no response description was provided for this operation"
+          }
+        },
+        "security": [
+          {
+            "oauth_2_auth": []
+          }
+        ]
+      },
+      "post": {
+        "summary": "Bids: store",
+        "description": "",
+        "operationId": "34184169-7674-4f91-8f6a-3cc706a40e40",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "default": "1",
+            "name": "page",
+            "required": false,
+            "in": "query"
+          },
+          {
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "{\"advertisement_id\":\"2\"}"
+            },
+            "in": "body",
+            "name": "body"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "no response description was provided for this operation"
+          }
+        },
+        "security": [
+          {
+            "oauth_2_auth": []
+          }
+        ]
+      }
+    },
+    "/bids/1": {
+      "get": {
+        "summary": "Bids: show",
+        "description": "",
+        "operationId": "f5be75b0-af2a-42b1-876d-e530bc631fc3",
+        "parameters": [
+          {
+            "type": "string",
+            "default": "1",
+            "name": "page",
+            "required": false,
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "no response description was provided for this operation"
+          }
+        },
+        "security": [
+          {
+            "oauth_2_auth": []
+          }
+        ]
+      }
+    }
+  },
+  "securityDefinitions": {
+    "oauth_2_auth": {
+      "type": "oauth2",
+      "scopes": {}
+    }
+  },
+  "tags": []
+}
