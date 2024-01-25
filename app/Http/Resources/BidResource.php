@@ -16,7 +16,7 @@ class BidResource extends JsonResource
         return [
             'id' => $this->id,
 
-            'user' => new UserResource($this->whenLoaded('user')),
+            'user' => new UserResource($this->user),
             'advertisement' => new AdvertisementResource($this->whenLoaded('advertisement')),
 
             'created_at' => $this->created_at->format('d.m.Y H:i:s'),

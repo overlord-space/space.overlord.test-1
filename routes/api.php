@@ -18,5 +18,6 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::middleware('auth.api-token')->group(function () {
-    Route::apiResource('advertisements', 'App\Http\Controllers\Api\AdvertisementController')->only(['index', 'store', 'update', 'destroy']);
+    Route::apiResource('advertisements', 'App\Http\Controllers\Api\AdvertisementController')->only(['index', 'store', 'show', 'update', 'destroy']);
+    Route::apiResource('bids', 'App\Http\Controllers\Api\BidController')->only(['index', 'store', 'show']);
 });

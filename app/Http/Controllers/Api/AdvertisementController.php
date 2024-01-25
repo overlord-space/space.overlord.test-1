@@ -13,6 +13,11 @@ use App\Models\Advertisement;
 
 class AdvertisementController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Advertisement::class, 'advertisement');
+    }
+
     public function index()
     {
         return response()->json([

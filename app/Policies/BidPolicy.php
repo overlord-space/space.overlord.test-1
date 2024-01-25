@@ -23,7 +23,7 @@ class BidPolicy
         return $this->checkBidOwnership($user, $bid);
     }
 
-    public function create(User $user)
+    public function create(User $user): Response
     {
         return $this->allow();
     }

@@ -6,9 +6,9 @@ namespace App\Services;
 
 use App\Exceptions\BidException;
 use App\Http\Resources\BidResource;
-use App\Models\Advertisement;
 use App\Models\Bid;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
+use Illuminate\Support\Facades\Auth;
 use Throwable;
 
 class BidService
@@ -35,15 +35,15 @@ class BidService
      */
     public function store(): static
     {
-        $bid = new Bid($this->getRequestData());
+        /** @var Bid $bid */
+        $bid = Bid::query()->firstOrNew([
+            'advertisement_id' => $this->getRequestData()['advertisement_id'],
+            'user_id' => Auth::id(),
+        ]);
 
-        /** @var Advertisement $advertisement */
-        $advertisement = Advertisement::query()->find($this->getRequestData()['advertisement_id']);
-
-        if ($advertisement->active === false) {
+        if ($bid->advertisement->active === false) {
             throw new BidException('This advertisement is not active.', 403);
         }
-        $bid->advertisement()->associate($advertisement);
 
         try {
             $bid->saveOrFail();
